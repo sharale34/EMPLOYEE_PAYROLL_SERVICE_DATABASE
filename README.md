@@ -37,3 +37,16 @@
 
 ### Checking employees who joined at particular date range
 ```SELECT * FROM employee_payroll WHERE start BETWEEN CAST('2019-01-01' AS DATE) AND DATE(NOW());```
+
+## UC6- Ability to add gender to employee payroll table
+### Adding gender
+```ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;```
+
+### Setting F gender for female employees
+```UPDATE employee_payroll SET gender = 'F' WHERE name='Terisa' or name='Deeksha';```
+
+### Setting M gender for male employees
+```UPDATE employee_payroll SET gender='M' WHERE name='Bill' or name='Charlie';```
+
+### Viewing gender
+```SELECT * FROM employee_payroll;```
