@@ -24,12 +24,12 @@
 
 ## UC3 - Ability to create employee payroll data in the payroll service
 ```INSERT INTO employee_payroll(name , salary , start) VALUES
-    -> ( 'Bill',1000000.00,'2018-01-03'),
-    -> ( 'Terisa',2000000.00,'2019-11-13'),
+    -> ('Bill',1000000.00,'2018-01-03'),
+    -> ('Terisa',2000000.00,'2019-11-13'),
     -> ('Charlie',3000000.00,'2020-05-21');
 ```
 ## UC4 - Ability to retrieve all the employee payroll data
-```SELECT* FROM employee_payroll;```
+```SELECT * FROM employee_payroll;```
 
 ## UC5 - Ability to retrieve salary of particular person and employees who have joined in a particular data range
 ### Viewing salary of particular person
@@ -50,3 +50,19 @@
 
 ### Viewing gender
 ```SELECT * FROM employee_payroll;```
+
+## UC7 - Ability to Find Sum, Average, Min, Max, Count
+### Total salary according to gender
+```SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;```
+
+### Average salary according to gender
+```SELECT gender, AVG(salary) FROM employee_payroll GROUP BY gender;```
+
+### Minimum salary according to gender
+```SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;```
+
+### Maximum salary according to gender
+```SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;```
+
+### Count of employees according to gender
+```SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;```
