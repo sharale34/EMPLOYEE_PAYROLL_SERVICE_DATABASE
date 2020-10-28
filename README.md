@@ -66,3 +66,11 @@
 
 ### Count of employees according to gender
 ```SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;```
+
+## UC8 - Ability to extend employee_payroll to add employee phone, address and department
+```
+ALTER TABLE employee_payroll ADD phone BIGINT AFTER name;
+ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone;
+ALTER TABLE employee_payroll ADD department VARCHAR(150) NOT NULL AFTER address;
+UPDATE employee_payroll SET address='hyderabad';
+```
