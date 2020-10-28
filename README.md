@@ -74,3 +74,11 @@ ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone;
 ALTER TABLE employee_payroll ADD department VARCHAR(150) NOT NULL AFTER address;
 UPDATE employee_payroll SET address='hyderabad';
 ```
+## UC9 - Ability to extend employee_payroll to have Basic Pay, Deductions, Taxable Pay, Income Tax and Net Pay
+```
+ALTER TABLE employee_payroll RENAME COLUMN salary TO basic_pay;
+ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basic_pay;
+ALTER TABLE employee_payroll ADD taxable_pay DOUBLE NOT NULL AFTER deductions;
+ALTER TABLE employee_payroll ADD income_tax DOUBLE NOT NULL AFTER taxable_pay;
+ALTER TABLE employee_payroll ADD net_pay DOUBLE NOT NULL AFTER taxable_pay;
+```
