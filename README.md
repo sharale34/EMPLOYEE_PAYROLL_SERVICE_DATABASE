@@ -81,4 +81,12 @@ ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basic_pay;
 ALTER TABLE employee_payroll ADD taxable_pay DOUBLE NOT NULL AFTER deductions;
 ALTER TABLE employee_payroll ADD income_tax DOUBLE NOT NULL AFTER taxable_pay;
 ALTER TABLE employee_payroll ADD net_pay DOUBLE NOT NULL AFTER taxable_pay;
+DESCRIBE employee_payroll;
+```
+## UC10 - Ability to make Terisa as part of Sales and Marketing department
+```
+UPDATE employee_payroll SET department='Sales' WHERE name='Terisa';
+INSERT INTO employee_payroll(name,phone_number,address,department,gender,basic_pay,deductions,taxable_pay,tax,net_pay,start) VALUES
+    -> ('Terisa','9494118273','hyderabad','Marketing','F','2000000','1000000','2000000','500000','1500000','2018-03-08');
+SELECT * FROM employee_payroll WHERE name='Terisa';
 ```
