@@ -90,3 +90,44 @@ INSERT INTO employee_payroll(name,phone_number,address,department,gender,basic_p
     -> ('Terisa','9494118273','hyderabad','Marketing','F','2000000','1000000','2000000','500000','1500000','2018-03-08');
 SELECT * FROM employee_payroll WHERE name='Terisa';
 ```
+## UC11 - Implement the ER Diagram into Payroll Service DataBase
+```
+CREATE TABLE company
+    -> (
+    -> company_id      INT NOT NULL PRIMARY KEY,
+    -> company_name    VARCHAR(150) NOT NULL
+    -> );
+CREATE TABLE employee_details
+    -> (
+    -> employee_id     INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> company_id      INT NOT NULL,
+    -> FOREIGN KEY     (company_id) REFERENCES company (company_id),
+    -> name            VARCHAR(150) NOT NULL,
+    -> phone_number    BIGINT(15) NOT NULL,
+    -> address         VARCHAR(250) NOT NULL,
+    -> gender          CHAR(1) NOT NULL,
+    -> start_date      DATE NOT NULL
+    -> );
+CREATE TABLE payroll
+    -> (
+    -> employee_id     INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> FOREIGN KEY     (employee_id) REFERENCES employee (employee_id),
+    -> basic_pay       DOUBLE NOT NULL,
+    -> deductions      DOUBLE NOT NULL,
+    -> taxable_pay     DOUBLE NOT NULL,
+    -> tax             DOUBLE NOT NULL,
+    -> net_pay         DOUBLE NOT NULL
+    -> );
+CREATE TABLE department
+    -> (
+    -> department_id   INT NOT NULL PRIMARY KEY,
+    -> department_name VARCHAR(150) NOT NULL
+    -> );
+CREATE TABLE employee_department
+    -> (
+    -> employee_id     INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> FOREIGN KEY     (employee_id) REFERENCES employee (employee_id),
+    -> department_id   INT NOT NULL,
+    -> FOREIGN KEY     (department_id) REFERENCES department (department_id)
+    -> );
+```
