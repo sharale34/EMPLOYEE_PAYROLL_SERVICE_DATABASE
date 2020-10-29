@@ -130,4 +130,44 @@ CREATE TABLE employee_department
     -> department_id   INT NOT NULL,
     -> FOREIGN KEY     (department_id) REFERENCES department (department_id)
     -> );
+
+### Inserting values into the tables created
+
+INSERT INTO company VALUES
+    -> (1,'Google'),
+    -> (2,'Microsoft'),
+    -> (3,'Capgemini');
+
+INSERT INTO employee VALUES
+    -> (101, 1, 'Bill', '9494118273', 'Hyderabad', 'M', '2018-01-01'),
+    -> (102, 2, 'Terisa', '7207020464', 'Nizamabad', 'F', '2019-11-11'),
+    -> (103, 3, 'Charlie', '9440293758', 'Chennai', 'M', '2020-05-21');
+INSERT INTO payroll VALUES
+    -> ('101', 4000000.00, 1000000.00, 3000000.00, 500000.00, 2500000.00),
+    -> ('102', 5000000.00, 1500000.00, 3500000.00, 1000000.00, 2500000.00),
+    -> ('103', 6000000.00, 2000000.00, 4000000.00, 1500000.00, 2500000.00);
+INSERT INTO department VALUES
+    -> (110,'Sales'),
+    -> (111,'Marketing'),
+    -> (112,'Finance');
+INSERT INTO employee_department VALUES
+    -> (101,110),
+    -> (102,111),
+    -> (103,112),
+    -> (102,110);
+```
+## UC12 - Ability to ensure all retrieve queries done are working with new table structure
+```
+SELECT * FROM company;
+SELECT * FROM employee_details;
+SELECT * FROM payroll;
+SELECT * FROM department;
+SELECT * FROM employee_department;
+SELECT salary FROM payroll WHERE name = 'Bill';
+SELECT * FROM payroll WHERE start BETWEEN CAST('2018-01-01' AS DATE) and DATE(NOW());
+SELECT SUM(p.net_pay), e.gender FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
+SELECT AVG(p.net_pay), e.gender FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
+SELECT MIN(p.net_pay), e.gender FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
+SELECT MAX(p.net_pay), e.gender FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
+SELECT COUNT(p.net_pay), e.gender FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
 ```
